@@ -41,14 +41,14 @@ Il cuore del sistema è un server **FastMCP** esterno (`SocratesMCPServer`) che 
   {
     "id": "ARCH_001",
     "category": "Architecture",
-    "rule": "Usa sempre il pattern MVVM o MVI. La logica di stato non deve mai risiedere nei componenti UI.",
-    "context": "Evita accoppiamento tra UI e business logic."
+    "rule": "Always use MVVM or MVI patterns. State logic must never reside in UI components.",
+    "context": "Avoids coupling between UI and business logic."
   },
   {
     "id": "DATA_001",
     "category": "Data",
-    "rule": "Usa Room per la persistenza locale. Non accedere mai al database dal thread principale.",
-    "context": "Fornisce uno strato di astrazione sicuro sopra SQLite."
+    "rule": "Use Room for local persistence. Never access the database from the main thread.",
+    "context": "Provides a safe abstraction layer over SQLite."
   }
 ]
 ```
