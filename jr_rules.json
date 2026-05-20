@@ -1,0 +1,122 @@
+[
+  {
+    "id": "ARCH_001",
+    "category": "Architecture",
+    "rule": "Usa sempre il pattern MVVM o MVI. La logica di stato non deve mai risiedere nei componenti UI.",
+    "context": "Evita accoppiamento tra UI e business logic, facilitando i test unitari e la gestione del ciclo di vita."
+  },
+  {
+    "id": "ARCH_002",
+    "category": "Architecture",
+    "rule": "Inietta le dipendenze tramite Koin o Hilt. Non istanziare mai classi core (DB, Network) direttamente.",
+    "context": "Garantisce modularità e permette di sostituire facilmente le implementazioni (es. Mock per i test)."
+  },
+  {
+    "id": "COMPOSE_001",
+    "category": "UI",
+    "rule": "Mantieni le funzioni Composable 'Stateless' passando lo stato verso l'alto (State Hoisting).",
+    "context": "Rende i componenti riutilizzabili, più facili da testare e previene bug di sincronizzazione dello stato."
+  },
+  {
+    "id": "COMPOSE_002",
+    "category": "Performance",
+    "rule": "Usa 'remember' e 'derivedStateOf' per calcoli pesanti all'interno di funzioni Composable.",
+    "context": "Previene ricalcoli inutili durante ogni frame di ricomposizione, mantenendo l'UI fluida."
+  },
+  {
+    "id": "ASYNC_001",
+    "category": "Concurrency",
+    "rule": "Usa Coroutine e Flow per operazioni asincrone. Evita assolutamente i thread bloccanti sul Main Thread.",
+    "context": "Mantiene l'app reattiva. Il blocco del thread principale causa l'ANR (Application Not Responding)."
+  },
+  {
+    "id": "ASYNC_002",
+    "category": "Concurrency",
+    "rule": "Lancia le coroutine nel corretto CoroutineScope (viewModelScope o lifecycleScope).",
+    "context": "Garantisce che le operazioni vengano cancellate automaticamente quando l'utente chiude la schermata, evitando memory leak."
+  },
+  {
+    "id": "DATA_001",
+    "category": "Data",
+    "rule": "Usa Room per la persistenza locale. Non accedere mai al database dal thread principale.",
+    "context": "Fornisce uno strato di astrazione sicuro sopra SQLite e garantisce l'integrità dei dati."
+  },
+  {
+    "id": "DATA_002",
+    "category": "Data",
+    "rule": "Utilizza il pattern Repository per mediare tra sorgenti dati locali (DB) e remote (API).",
+    "context": "Centralizza la logica di accesso ai dati e permette di implementare strategie di caching trasparenti."
+  },
+  {
+    "id": "CLEAN_001",
+    "category": "Clean Code",
+    "rule": "Segui il principio di Singola Responsabilità (SRP). Una funzione o classe deve fare una sola cosa.",
+    "context": "Riduce la complessità del codice e rende il debug molto più veloce."
+  },
+  {
+    "id": "CLEAN_002",
+    "category": "Clean Code",
+    "rule": "Preferisci la composizione all'eredità per estendere le funzionalità delle classi.",
+    "context": "L'eredità profonda crea gerarchie rigide; la composizione è flessibile e tipica dello stile Kotlin."
+  },
+  {
+    "id": "NETWORK_001",
+    "category": "Network",
+    "rule": "Gestisci sempre i casi di errore di rete (timeout, no connection) tramite Result wrapper o eccezioni catturate.",
+    "context": "Evita crash improvvisi e permette di mostrare messaggi di errore significativi all'utente."
+  },
+  {
+    "id": "SEC_001",
+    "category": "Security",
+    "rule": "Non salvare mai chiavi API o dati sensibili in chiaro nel codice o in SharedPreferences standard.",
+    "context": "Usa EncryptedSharedPreferences o il KeyStore di Android per proteggere i dati dai malintenzionati."
+  },
+  {
+    "id": "SEC_002",
+    "category": "Security",
+    "rule": "Usa ProGuard o R8 per offuscare il codice in release.",
+    "context": "Rende molto più difficile il reverse engineering della logica proprietaria dell'azienda."
+  },
+  {
+    "id": "PERF_003",
+    "category": "Performance",
+    "rule": "Evita memory leak: non passare riferimenti a Context o View all'interno di oggetti singleton o classi statiche.",
+    "context": "I riferimenti pendenti impediscono al Garbage Collector di liberare la memoria, portando a OutOfMemoryError."
+  },
+  {
+    "id": "KOTLIN_001",
+    "category": "Language",
+    "rule": "Sfrutta l'immutabilità usando 'val' invece di 'var' ogni volta che è possibile.",
+    "context": "Riduce gli effetti collaterali e rende il codice più sicuro in ambienti multi-thread."
+  },
+  {
+    "id": "KOTLIN_002",
+    "category": "Language",
+    "rule": "Usa le 'Extension Functions' per estendere classi esistenti senza ereditare.",
+    "context": "Migliora la leggibilità del codice e mantiene pulite le classi base."
+  },
+  {
+    "id": "RESOURCES_001",
+    "category": "Resources",
+    "rule": "Non hard-codare mai le stringhe. Usa sempre il file strings.xml.",
+    "context": "Indispensabile per il supporto multilingua e la manutenibilità centralizzata."
+  },
+  {
+    "id": "TEST_001",
+    "category": "Testing",
+    "rule": "Scrivi Unit Test per ogni UseCase o ViewModel. Punta a una copertura minima della logica di business.",
+    "context": "Permette di fare refactoring in sicurezza senza rompere funzionalità esistenti."
+  },
+  {
+    "id": "UI_001",
+    "category": "UI",
+    "rule": "Supporta diverse dimensioni di schermo e orientamenti (Mobile, Tablet, Foldable).",
+    "context": "Garantisce un'esperienza utente professionale su tutto l'ecosistema Android."
+  },
+  {
+    "id": "LOG_001",
+    "category": "Logging",
+    "rule": "Usa un sistema di logging centralizzato (es. Timber). Rimuovi o disabilita i log in produzione.",
+    "context": "Evita di esporre informazioni sensibili nei log di sistema visibili tramite logcat."
+  }
+]
